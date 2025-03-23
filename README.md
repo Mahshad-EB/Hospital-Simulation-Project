@@ -1,6 +1,7 @@
-<h1>Hospital System Problem Formulation</h1>
+<h1>Hospital System Simulation</h1>
 <p><em>(Collaboratively developed with a classmate)</em></p>
 
+<h2>PHASE 1</h2>
 <h2>1. Brief Overview</h2>
 <p>This document outlines a detailed hospital system model comprising seven interconnected departments. The system manages two patient categories (elective and urgent) with distinct arrival patterns, prioritization rules, and treatment pathways. Key challenges include resource allocation, patient routing under uncertainty, and handling critical scenarios like power outages.</p>
 
