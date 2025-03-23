@@ -210,7 +210,7 @@
     </tr>
     <tr>
       <td>6. Average Number of Patient Deaths</td>
-      <td>If Phase 1 defined exactly 5 metrics: % of non-emergency patients waiting >1 day for surgery</td>
+      <td>>Average number of dead patients during surgery</td>
     </tr>
   </tbody>
 </table>
