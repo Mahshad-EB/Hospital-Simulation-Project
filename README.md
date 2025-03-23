@@ -1,91 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Simulation System: Patient Flow and Resource Management</title>
 </head>
 <body>
-<h1>Hospital Simulation Project (Phase I)</h1>
+    <h1>Hospital Simulation System: Patient Flow and Resource Management</h1>
+    
+    <!-- General Description -->
+    <h2>System Overview</h2>
+    <p>This hospital simulation model was collaboratively developed with a classmate for a healthcare operations management course. The system represents a 7-department hospital with complex patient flows and resource constraints. Key aspects include patient prioritization, surgical workflows, and emergency response mechanisms.</p>
 
-<h2>Collaborative Project</h2>
-<p>This project was completed as part of a group effort with one of my classmates.</p>
+    <!-- Department Structure -->
+    <h2>Hospital Departments & Bed Capacity</h2>
+    <table>
+        <tr>
+            <th>Department</th>
+            <th>Beds</th>
+        </tr>
+        <tr><td>Pre-Operative Unit</td><td>25</td></tr>
+        <tr><td>Emergency Room (ER)</td><td>10</td></tr>
+        <tr><td>Laboratory</td><td>3</td></tr>
+        <tr><td>Operating Rooms (OR)</td><td>50</td></tr>
+        <tr><td>General Ward</td><td>40</td></tr>
+        <tr><td>ICU</td><td>10</td></tr>
+        <tr><td>CCU</td><td>5</td></tr>
+    </table>
 
-<h2>Overview</h2>
-<p>The project focuses on analyzing patient flows and resource utilization within various hospital departments, with an emphasis on elective and non-elective surgery patients.</p>
+    <!-- Patient Classification -->
+    <h2>Patient Types & Arrival Process</h2>
+    <h3>Classification Probabilities</h3>
+    <ul>
+        <li>Elective Patients: 75% (Poisson λ=1/hour)</li>
+        <li>Urgent Patients: 25% (Poisson λ=4/hour)</li>
+    </ul>
 
-<h2>Problem Statement</h2>
-<p>The hospital system comprises seven main departments:</p>
-<ul>
-    <li>Pre-Surgery Admission Unit</li>
-    <li>Emergency Room (ER)</li>
-    <li>Laboratory for Pre-Surgery Tests</li>
-    <li>Operating Rooms</li>
-    <li>General ICU/CCU for recovery after surgery or simpler procedures</li>
-    <li>Specialized ICU for patients with complex surgeries or critical conditions</li>
-    <li>Cardiac CCU for heart surgery patients</li>
-</ul>
+    <h3>Special Arrival Cases</h3>
+    <ul>
+        <li>Group Arrivals (0.5% of urgent patients):
+            <ul>
+                <li>Group size: Uniform(2-5)</li>
+                <li>ER queue capacity: 10 patients</li>
+            </ul>
+        </li>
+    </ul>
 
-<p>The resources available in the hospital, such as beds and medical equipment, are distributed across these departments as follows:</p>
-<ul>
-    <li>Number of beds:</li>
-    <li>25 (Pre-Surgery)</li>
-    <li>10 (ER)</li>
-    <li>3 (Laboratory)</li>
-    <li>50 (Operating Rooms)</li>
-    <li>40 (General ICU/CCU)</li>
-    <li>10 (Specialized ICU)</li>
-    <li>5 (Cardiac CCU)</li>
-</ul>
+    <!-- Testing & Preparation Process -->
+    <h2>Pre-Operative Process</h2>
+    <h3>Administrative Waiting</h3>
+    <ul>
+        <li>Elective: 60 minutes pre-lab</li>
+        <li>Urgent: 10 minutes pre-lab</li>
+    </ul>
 
-<h3>Patient Admission</h3>
-<p>Patients are admitted into the hospital based on the type of surgery required (elective or non-elective).</p>
-<ul>
-    <li><strong>Elective Patients:</strong> These patients are scheduled for surgery after diagnosis by their physician.</li>
-    <li><strong>Non-Elective Patients:</strong> These patients require immediate surgery due to emergencies or critical conditions.</li>
-</ul>
+    <h3>Laboratory Workflow</h3>
+    <ul>
+        <li>Testing time: Uniform(28-32 minutes)</li>
+        <li>Priority: Urgent > Elective</li>
+    </ul>
 
-<h3>Arrival and Distribution of Patients</h3>
-<ul>
-    <li><strong>Elective Patients:</strong> Spend two days in the pre-surgery admission unit before surgery.</li>
-    <li><strong>Non-Elective Patients:</strong> Immediately proceed to the operating room if one is available.</li>
-    <li><strong>Arrival Distribution:</strong> 75% of incoming patients are elective; 25% are non-elective.</li>
-    <li><strong>Poisson Arrival Rates:</strong>
-        <ul>
-            <li>Elective patients arrive at a rate of 1 patient/hour.</li>
-            <li>Non-elective patients arrive at a rate of 4 patients/hour.</li>
-        </ul>
-    </li>
-</ul>
+    <!-- Surgical Process -->
+    <h2>Surgical Operations</h2>
+    <h3>Surgery Types Distribution</h3>
+    <table>
+        <tr><th>Type</th><th>Probability</th></tr>
+        <tr><td>Simple</td><td>50%</td></tr>
+        <tr><td>Moderate</td><td>45%</td></tr>
+        <tr><td>Complex</td><td>5%</td></tr>
+    </table>
 
-<h3>Other Key Details</h3>
-<ul>
-    <li><strong>Emergency Patients:</strong> Group arrivals due to accidents (approximately 50% of non-elective patients arrive in groups).</li>
-    <li><strong>Pre-Surgery Tests:</strong> Conducted in the laboratory (priority given to non-elective patients).</li>
-    <li><strong>Operating Room Preparation Time:</strong> Triangular distribution (minimum: 75 minutes, mode: 100 minutes, maximum: 5 minutes).</li>
-    <li><strong>Surgery Types:</strong>
-        <ul>
-            <li>Simple surgeries (e.g., appendectomy).</li>
-            <li>Moderate surgeries (e.g., cholecystectomy).</li>
-            <li>Complex surgeries (e.g., open-heart surgery).</li>
-        </ul>
-    </li>
-</ul>
+    <h3>OR Management</h3>
+    <ul>
+        <li>Setup time: 10 minutes between surgeries</li>
+        <li>Prioritization: Urgent > Elective</li>
+    </ul>
 
-<h3>Post-Surgery Transition</h3>
-<p>Patients are distributed into different post-surgery recovery units:</p>
-<ul>
-    <li><strong>Simple surgeries:</strong> General ICU.</li>
-    <li><strong>Complex surgeries:</strong> Specialized ICU or Cardiac CCU.</li>
-</ul>
-<p>Patients may require additional care or re-surgery based on complications. In rare cases (10%), patients may pass away during surgery.</p>
+    <!-- Post-Operative Care -->
+    <h2>Post-Surgical Pathways</h2>
+    <h3>Patient Routing</h3>
+    <ul>
+        <li>Simple Surgery → General Ward
+            <ul><li>Stay time: Exponential(λ=50)</li></ul>
+        </li>
+        <li>Moderate Surgery:
+            <ul>
+                <li>General Ward (70%)</li>
+                <li>ICU (10%)</li>
+                <li>CCU (20%)</li>
+            </ul>
+        </li>
+        <li>Complex Surgery:
+            <ul>
+                <li>ICU (75% non-cardiac)</li>
+                <li>CCU (25% cardiac)</li>
+                <li>Mortality rate: 10%</li>
+            </ul>
+        </li>
+    </ul>
 
-<h2>Project Requirements</h2>
-<ul>
-    <li><strong>Static Description:</strong> Model the given scenario and describe all entities, variables, events, and interactions in detail.</li>
-    <li><strong>Assumptions:</strong> Clearly list any assumptions made during the modeling and simulation process.</li>
-    <li><strong>Performance Evaluation:</strong> Provide at least four metrics to evaluate system performance, explaining the importance of each.</li>
-    <li><strong>Dynamic Description:</strong> Create a flowchart representing all events and transitions within the system.</li>
-    <li><strong>Event Scheduling:</strong> Determine and describe the scheduling process for all events in the simulation.</li>
-</ul>
+    <h3>Critical Care Transitions</h3>
+    <ul>
+        <li>ICU/CCU → General Ward:
+            <ul><li>Exponential(λ=25) stay duration</li></ul>
+        </li>
+        <li>1% readmission rate for urgent reoperation</li>
+    </ul>
+
+    <!-- Special Considerations -->
+    <h2>System Constraints & Exceptions</h2>
+    <h3>Power Management</h3>
+    <ul>
+        <li>Monthly random outages</li>
+        <li>Generator capacity:
+            <ul>
+                <li>100% OR power</li>
+                <li>80% ICU/CCU beds</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Modeling Assumptions</h3>
+    <ul>
+        <li>No routine ward→ICU transitions</li>
+        <li>Fixed medical staff allocation</li>
+        <li>Instant resource reallocation</li>
+    </ul>
+
+    <!-- System Flow Visualization -->
+    <h2>Patient Flow Diagram</h2>
+    <p>[Visual representation placeholder showing patient pathways through departments with probability annotations]</p>
+
+    <!-- Technical Appendix -->
+    <h2>Statistical Distributions</h2>
+    <table>
+        <tr><th>Process</th><th>Distribution</th></tr>
+        <tr><td>Urgent Pre-OR Wait</td><td>Triangular(5,75,100)</td></tr>
+        <tr><td>General Ward Stay</td><td>Exponential(λ=50)</td></tr>
+        <tr><td>ICU/CCU Stay</td><td>Exponential(λ=25)</td></tr>
+    </table>
 </body>
 </html>
