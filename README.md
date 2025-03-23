@@ -149,3 +149,91 @@
 </ul>
 
 <p>This model integrates probabilistic events, prioritization rules, and resource constraints to simulate real-world hospital operations. Critical parameters (e.g., surgery time distributions) can be calibrated using historical data for accuracy.</p>
+
+
+<h2>PHASE 2 & PHASE 3</h2>
+
+<h2>Project Overview</h2>
+<p>This project focuses on modeling and optimizing surgical patient flow in a hospital system. In Phase 1, a conceptual model of the surgical workflow was designed. Phase 2 extends this by:</p>
+<ul>
+  <li>Identifying the service time distribution from historical patient data</li>
+  <li>Implementing a Python simulation to compute critical performance metrics required by hospital management, along with statistical confidence intervals</li>
+</ul>
+
+
+<h3>PHASE 2: Service Distribution Identification</h3>
+<p><strong>Objective:</strong> Determine the statistical distribution (e.g., exponential, normal, log-normal) of patient service times across hospital departments (pre-op, lab, OR, ICU).</p>
+<h4>Approach:</h4>
+<ul>
+  <li>Use Kernel Density Estimation (KDE) or Goodness-of-Fit tests (e.g., Kolmogorov-Smirnov) to identify the best-fit distribution</li>
+  <li>Apply sampling methods to generate synthetic data:
+    <ul>
+      <li>Inverse Transform Method for closed-form distributions</li>
+      <li>Acceptance-Rejection Sampling for empirical/complex distributions</li>
+    </ul>
+  </li>
+  <li>Validate results with visualizations (histograms, Q-Q plots)</li>
+</ul>
+
+<h3>PHASE 3: Python Simulation & Performance Metrics</h3>
+<p>The Python program will calculate the following metrics with 95% confidence intervals (α = 0.05):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1. Mean Time in System</td>
+      <td>Average duration a patient spends in the hospital (from arrival to discharge)</td>
+    </tr>
+    <tr>
+      <td>2. ER Queue Saturation Probability</td>
+      <td>Likelihood that the emergency queue operates at full capacity</td>
+    </tr>
+    <tr>
+      <td>3. Queue-Specific Statistics</td>
+      <td>For pre-op, lab, OR, and ICU queues:<br>
+        - Max/Average Queue Length<br>
+        - Mean Waiting Time</td>
+    </tr>
+    <tr>
+      <td>4. Reoperation Rate</td>
+      <td>Average number of repeat surgeries for patients with complex procedures</td>
+    </tr>
+    <tr>
+      <td>5. Bed Productivity</td>
+      <td>Utilization rate of beds in each department (occupied vs. total beds)</td>
+    </tr>
+    <tr>
+      <td>6. Custom Metric</td>
+      <td>If Phase 1 defined exactly 5 metrics: % of non-emergency patients waiting >1 day for surgery</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Key Features & Outputs</h2>
+<h3>1. Simulation Engine</h3>
+<ul>
+  <li><strong>Event-Driven Design:</strong> Prioritized event handling (e.g., surgery start, lab test completion)</li>
+  <li><strong>Random Sampling:</strong>
+    <ul>
+      <li>Uniform random numbers generated via numpy or random libraries</li>
+      <li>Non-uniform distributions use transform methods (e.g., inverse CDF for exponential)</li>
+    </ul>
+  </li>
+</ul>
+این کد را می‌توانید بلافاصله بعد از محتوای فاز 1 قرار دهید. نکات کلیدی در پیاده‌سازی:
+
+ساختار هدینگ‌ها (H2/H3/H4) دقیقاً مشابه فاز 1 نگه داشته شده
+جدول و لیست‌ها با همان استایل اولیه پیاده‌سازی شده‌اند
+تمام محتوای جدید در یک بخش مجزای <h2>PHASE 2</h2> قرار گرفته
+تگ‌های HTML به درستی بسته شده‌اند
+از علائم نگارشی و فاصله‌گذاری مشابه فاز 1 استفاده شده
+
+
+
+
