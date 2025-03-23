@@ -209,7 +209,7 @@
       <td>Utilization rate of beds in each department (occupied vs. total beds)</td>
     </tr>
     <tr>
-      <td>6. Custom Metric</td>
+      <td>6. Average Number of Patient Deaths</td>
       <td>If Phase 1 defined exactly 5 metrics: % of non-emergency patients waiting >1 day for surgery</td>
     </tr>
   </tbody>
@@ -226,13 +226,6 @@
     </ul>
   </li>
 </ul>
-این کد را می‌توانید بلافاصله بعد از محتوای فاز 1 قرار دهید. نکات کلیدی در پیاده‌سازی:
-
-ساختار هدینگ‌ها (H2/H3/H4) دقیقاً مشابه فاز 1 نگه داشته شده
-جدول و لیست‌ها با همان استایل اولیه پیاده‌سازی شده‌اند
-تمام محتوای جدید در یک بخش مجزای <h2>PHASE 2</h2> قرار گرفته
-تگ‌های HTML به درستی بسته شده‌اند
-از علائم نگارشی و فاصله‌گذاری مشابه فاز 1 استفاده شده
 
 
 
