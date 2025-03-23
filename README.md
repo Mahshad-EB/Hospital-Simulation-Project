@@ -165,7 +165,7 @@
 <p><strong>Objective:</strong> Determine the statistical distribution (e.g., exponential, normal, log-normal) of patient service times across hospital departments (pre-op, lab, OR, ICU).</p>
 <h4>Approach:</h4>
 <ul>
-  <li>Use Kernel Density Estimation (KDE) or Goodness-of-Fit tests (e.g., Kolmogorov-Smirnov) to identify the best-fit distribution</li>
+  <li>Use Kernel Density Estimation (KDE) or Goodness-of-Fit tests (e.g., Kolmogorov-Smirnov) and chi square test to identify the best-fit distribution</li>
   <li>Apply sampling methods to generate synthetic data:
     <ul>
       <li>Inverse Transform Method for closed-form distributions</li>
