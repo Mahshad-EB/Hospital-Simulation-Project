@@ -3,127 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital System Problem Formulation</title>
+    <title>Hospital System Modeling and Simulation</title>
 </head>
 <body>
     <h1>Hospital System Problem Formulation</h1>
-    <p><em>(Collaboratively developed with a classmate)</em></p>
+    
+    <h2>Collaborative System Design Document</h2>
+    
+    <h3>1. System Overview</h3>
+    <p>This document presents a comprehensive hospital system model with seven interconnected departments managing elective and urgent patients. The model addresses critical challenges in resource allocation, patient routing, and emergency scenarios through probabilistic modeling and operational optimization.</p>
 
-    <h2>1. Brief Overview</h2>
-    <p>This document outlines a detailed hospital system model comprising seven interconnected departments. The system manages two patient categories (elective and urgent) with distinct arrival patterns, prioritization rules, and treatment pathways. Key challenges include resource allocation, patient routing under uncertainty, and handling critical scenarios like power outages.</p>
-
-    <h2>2. Hospital Departments & Bed Capacity</h2>
+    <h3>2. Departmental Capacity</h3>
     <table>
         <tr>
             <th>Department</th>
-            <th>Number of Beds</th>
+            <th>Bed Capacity</th>
         </tr>
-        <tr><td>1. Pre-Operative Unit</td><td>25</td></tr>
-        <tr><td>2. Emergency Room (ER)</td><td>10</td></tr>
-        <tr><td>3. Laboratory</td><td>3</td></tr>
-        <tr><td>4. Operating Rooms (ORs)</td><td>50</td></tr>
-        <tr><td>5. General Ward</td><td>40</td></tr>
-        <tr><td>6. Intensive Care Unit (ICU)</td><td>10</td></tr>
-        <tr><td>7. Cardiac Care Unit (CCU)</td><td>5</td></tr>
+        <tr><td>Pre-Operative Unit</td><td>25</td></tr>
+        <tr><td>Emergency Room (ER)</td><td>10</td></tr>
+        <tr><td>Laboratory</td><td>3</td></tr>
+        <tr><td>Operating Rooms (ORs)</td><td>50</td></tr>
+        <tr><td>General Ward</td><td>40</td></tr>
+        <tr><td>ICU</td><td>10</td></tr>
+        <tr><td>CCU</td><td>5</td></tr>
     </table>
 
-    <h2>3. Patient Classification & Arrival Process</h2>
-    <h3>3.1 Patient Types</h3>
+    <h3>3. Patient Classification & Arrival Patterns</h3>
     <ul>
-        <li><strong>Elective Patients (75%):</strong> Scheduled in advance, admitted to the Pre-Operative Unit 2 days before surgery.</li>
-        <li><strong>Urgent Patients (25%):</strong> Require immediate care, prioritized for surgery. Admitted via the ER.</li>
-    </ul>
-
-    <h3>3.2 Arrival Rates</h3>
-    <ul>
-        <li><strong>Elective Patients:</strong> Poisson arrival rate of 1 patient/hour</li>
-        <li><strong>Urgent Patients:</strong> Poisson arrival rate of 4 patients/hour
+        <li><strong>Elective Patients (75%):</strong>
             <ul>
-                <li><strong>Group Arrivals:</strong> 0.5% arrive in groups of 2–5 (uniform distribution) if ER capacity allows</li>
-                <li><strong>ER Queue Limit:</strong> Maximum 10 patients in ambulances</li>
+                <li>Poisson arrival rate: 1 patient/hour</li>
+                <li>Pre-operative stay: 48 hours</li>
+            </ul>
+        </li>
+        <li><strong>Urgent Patients (25%):</strong>
+            <ul>
+                <li>Poisson arrival rate: 4 patients/hour</li>
+                <li>ER queue capacity: 10 patients</li>
+                <li>0.5% group arrivals (2-5 patients)</li>
             </ul>
         </li>
     </ul>
 
-    <h2>4. Testing Process</h2>
-    <h3>Administrative Wait Time</h3>
-    <ul>
-        <li>Elective (Pre-Operative): 60 minutes</li>
-        <li>Urgent (ER): 10 minutes</li>
-    </ul>
-
-    <h3>Laboratory Testing</h3>
-    <ul>
-        <li>Testing time: Uniform distribution (28–32 minutes)</li>
-        <li>Priority: Urgent > Elective</li>
-    </ul>
-
-    <h3>Post-Testing Routing</h3>
-    <ul>
-        <li>Elective: Return to Pre-Operative Unit (2 days) → OR</li>
-        <li>Urgent: ER (Triangular wait: min=5, mode=75, max=100 mins) → OR</li>
-    </ul>
-
-    <h2>5. Surgery Process</h2>
-    <h3>5.1 OR Setup</h3>
-    <ul>
-        <li>Setup Time: 10 minutes between surgeries</li>
-        <li>Prioritization: Urgent > Elective</li>
-    </ul>
-
-    <h3>5.2 Surgery Types & Distribution</h3>
-    <table>
-        <tr><th>Surgery Type</th><th>Probability</th></tr>
-        <tr><td>Simple (e.g., appendectomy)</td><td>50%</td></tr>
-        <tr><td>Moderate (e.g., cholecystectomy)</td><td>45%</td></tr>
-        <tr><td>Complex (e.g., open-heart surgery)</td><td>5%</td></tr>
-    </table>
-
-    <h2>6. Post-Surgery Routing</h2>
-    <h3>6.1 Post-Operative Transfers</h3>
-    <ul>
-        <li><strong>Simple Surgery:</strong> → General Ward</li>
-        <li><strong>Moderate Surgery:</strong>
+    <h3>4. Diagnostic Workflow</h3>
+    <ol>
+        <li><strong>Administrative Processing:</strong>
             <ul>
-                <li>General Ward (70%)</li>
-                <li>ICU (10%)</li>
-                <li>CCU (20%)</li>
+                <li>Elective: 60 minutes pre-lab</li>
+                <li>Urgent: 10 minutes pre-lab</li>
             </ul>
         </li>
-        <li><strong>Complex Surgery:</strong>
+        <li><strong>Laboratory Testing:</strong>
             <ul>
-                <li>ICU (75% non-cardiac)</li>
-                <li>CCU (25% cardiac)</li>
-                <li>1% require urgent reoperation</li>
-                <li>10% mortality rate</li>
+                <li>Duration: Uniform(28-32 minutes)</li>
+                <li>Priority: Urgent > Elective</li>
             </ul>
+        </li>
+    </ol>
+
+    <h3>5. Surgical Operations</h3>
+    <ul>
+        <li><strong>OR Protocols:</strong>
+            <ul>
+                <li>10-minute setup between surgeries</li>
+                <li>Urgent patient prioritization</li>
+            </ul>
+        </li>
+        <li><strong>Surgery Distribution:</strong>
+            <table>
+                <tr><th>Type</th><th>Probability</th></tr>
+                <tr><td>Simple</td><td>50%</td></tr>
+                <tr><td>Moderate</td><td>45%</td></tr>
+                <tr><td>Complex</td><td>5%</td></tr>
+            </table>
         </li>
     </ul>
 
-    <h3>6.2 Stay Duration</h3>
-    <ul>
-        <li><strong>General Ward:</strong> Exponential (mean=50 hours)</li>
-        <li><strong>ICU/CCU:</strong> Exponential (mean=25 hours) → General Ward</li>
-    </ul>
-
-    <h2>7. Additional Considerations</h2>
-    <ul>
-        <li><strong>Power Outages:</strong>
+    <h3>6. Post-Operative Care</h3>
+    <ol>
+        <li><strong>Patient Routing:</strong>
             <ul>
-                <li>Once/month random occurrence</li>
-                <li>Generators support: 100% ORs, 80% ICU/CCU beds</li>
+                <li>Simple Cases → General Ward</li>
+                <li>Moderate Cases: 70% GW, 20% CCU, 10% ICU</li>
+                <li>Complex Cases: 75% ICU, 25% CCU</li>
             </ul>
         </li>
-        <li><strong>Patient Deterioration:</strong> Ward→ICU transfers neglected</li>
-        <li><strong>Discharge:</strong> After General Ward stay completion</li>
+        <li><strong>Care Duration:</strong>
+            <ul>
+                <li>General Ward: Exp(50h)</li>
+                <li>ICU/CCU: Exp(25h)</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>7. Emergency Protocols</h3>
+    <ul>
+        <li><strong>Power Outage Response:</strong>
+            <ul>
+                <li>Full OR generator support</li>
+                <li>80% ICU/CCU backup capacity</li>
+            </ul>
+        </li>
+        <li><strong>Critical Care:</strong>
+            <ul>
+                <li>1% complication rate requiring reoperation</li>
+                <li>10% surgical mortality rate</li>
+            </ul>
+        </li>
     </ul>
 
-    <h2>8. System Flow Summary</h2>
-    <ul>
-        <li><strong>Elective Path:</strong><br>
-            Pre-Operative → Lab → Pre-Operative (2 days) → OR → General Ward → Discharge</li>
-        <li><strong>Urgent Path:</strong><br>
-            ER → Lab → ER (triangular wait) → OR → [ICU/CCU/General Ward] → Discharge</li>
-    </ul>
+    <h3>8. System Validation Challenges</h3>
+    <ol>
+        <li>Pre-Operative unit capacity mismatch</li>
+        <li>ICU/CCU bed shortage risks</li>
+        <li>General Ward overflow potential</li>
+        <li>Group arrival surge management</li>
+    </ol>
 </body>
 </html>
