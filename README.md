@@ -210,7 +210,7 @@
     </tr>
     <tr>
       <td>6. Average Number of Patient Deaths</td>
-      <td>>Average number of dead patients during surgery</td>
+      <td>Average number of dead patients during surgery</td>
     </tr>
   </tbody>
 </table>
