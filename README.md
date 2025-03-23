@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hospital Simulation Project</title>
 </head>
 <body>
 <h1>Hospital Simulation Project (Phase I)</h1>
@@ -12,7 +11,7 @@
 <p>This project was completed as part of a group effort with one of my classmates.</p>
 
 <h2>Overview</h2>
-<p>The following content is derived from the file <strong>Phase I.pdf</strong>, which outlines the problem statement, scenario, and requirements for modeling and simulating a hospital system. The project focuses on analyzing patient flows and resource utilization within various hospital departments, with an emphasis on elective and non-elective surgery patients.</p>
+<p>The project focuses on analyzing patient flows and resource utilization within various hospital departments, with an emphasis on elective and non-elective surgery patients.</p>
 
 <h2>Problem Statement</h2>
 <p>The hospital system comprises seven main departments:</p>
@@ -28,7 +27,8 @@
 
 <p>The resources available in the hospital, such as beds and medical equipment, are distributed across these departments as follows:</p>
 <ul>
-    <li>Number of beds: 25 (Pre-Surgery)</li>
+    <li>Number of beds:</li>
+    <li>25 (Pre-Surgery)</li>
     <li>10 (ER)</li>
     <li>3 (Laboratory)</li>
     <li>50 (Operating Rooms)</li>
