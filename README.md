@@ -227,6 +227,63 @@
   </li>
 </ul>
 
+<h2>PHASE 3</h2>
+<h2>Objective</h2>
+<p>Redesign surgical workflows to stabilize hospital operations using simulation principles.</p>
 
+<h2>Project Tasks</h2>
 
+<h3>Task 1: System Design</h3>
+<p>Develop two operationally stable systems by applying the following policies:</p>
+<ul>
+    <li><strong>Capacity Upgrades:</strong> Increase bed and equipment capacity in critical departments (e.g., Operating Rooms, Pre-Operative units).</li>
+    <li><strong>Pre-Operative Stay Reduction:</strong> Optimize workflows to reduce pre-surgical hospitalization time for elective patients.</li>
+    <li><strong>Surgery Time Reduction:</strong> Achieve at least a 10% reduction in moderate and complex surgery durations through OR equipment upgrades.</li>
+</ul>
+<p><strong>Constraints:</strong> Both systems must ensure operational stability across all departments, maintaining finite queue lengths and steady resource utilization.</p>
+
+<h3>Task 2: Steady-State Analysis</h3>
+<p>Perform the following analyses for both systems:</p>
+<ul>
+    <li><strong>Cold Analysis:</strong> Theoretical or closed-form evaluation.</li>
+    <li><strong>Warm Analysis:</strong> Simulation under stochastic variability.</li>
+</ul>
+<p><strong>Long-Term Metrics:</strong></p>
+<ul>
+    <li>Mean queue length (<em>Lq</em>).</li>
+    <li>Mean waiting time (<em>Wq</em>).</li>
+</ul>
+
+<h3>Task 3: Independent Sampling Comparison</h3>
+<p>Compare the two systems using independent sampling methods.</p>
+<p><strong>Metrics of Interest:</strong></p>
+<ul>
+    <li><em>Lq</em> (mean queue length).</li>
+    <li><em>Wq</em> (mean waiting time).</li>
+</ul>
+<p><strong>Statistical Framework:</strong></p>
+<ul>
+    <li>Significance level: <strong>α = 0.05</strong>.</li>
+    <li>95% confidence intervals.</li>
+    <li>Hypothesis testing: Two-sample t-test or nonparametric alternatives (e.g., Mann-Whitney).</li>
+</ul>
+<p><strong>Deliverable:</strong> Identify the system with statistically superior performance for elective patients.</p>
+
+<h3>Task 4: Secondary Metric Evaluation</h3>
+<p>Define an additional performance metric (e.g., resource utilization, reoperation rate) and repeat Task 3’s comparison for this metric.</p>
+
+<h3>Task 5: Management Recommendation</h3>
+<p>Based on the results of Tasks 3 and 4, provide a data-driven recommendation to hospital management. Include:</p>
+<ul>
+    <li>Cost-benefit analysis of proposed changes.</li>
+    <li>Risks and scalability considerations.</li>
+</ul>
+
+<h2>Simulation Methods and Guidelines</h2>
+<ul>
+    <li>Utilize <strong>discrete-event simulation</strong> principles for cold and warm analyses.</li>
+    <li>Apply <strong>Monte Carlo sampling</strong> or random variate generation for stochastic components.</li>
+    <li>Validate results using steady-state convergence criteria (e.g., batch means method).</li>
+</ul>
+<p>This project framework integrates core simulation principles to address real-world operational challenges effectively.
 
