@@ -227,7 +227,7 @@
   </li>
 </ul>
 
-<h2>PHASE 3</h2>
+<h2>PHASE 4</h2>
 <h2>Objective</h2>
 <p>Redesign surgical workflows to stabilize hospital operations using simulation principles.</p>
 
@@ -267,7 +267,7 @@
     <li>95% confidence intervals.</li>
     <li>Hypothesis testing: Two-sample t-test or nonparametric alternatives (e.g., Mann-Whitney).</li>
 </ul>
-<p><strong>Deliverable:</strong> Identify the system with statistically superior performance for elective patients.</p>
+<p>Identify the system with statistically superior performance for elective patients.</p>
 
 <h3>Task 4: Secondary Metric Evaluation</h3>
 <p>Define an additional performance metric (e.g., resource utilization, reoperation rate) and repeat Task 3’s comparison for this metric.</p>
